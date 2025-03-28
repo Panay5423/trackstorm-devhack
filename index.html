@@ -22,13 +22,34 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Community</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Need Help</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="https://www.thelivelovelaughfoundation.org/find-help/helplines" target="_blank">Community</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#helpModal">Need Help</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <!-- Bootstrap Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"> 
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title" id="helpModalLabel">Need Help?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>If you need assistance, please contact our support team.
+            <p>Phone: <a href="https://icallhelpline.org/"> +91 9152987821 </a></p>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -39,39 +60,38 @@
 
         </div>
     </section>
-    <!-- Mood & Activity Tracker -->
-    <div class="container mt-5">
-        <h2>Track Your Mood & Activity</h2>
+    <div class="mood-tracker-container">
+        <h2>📝 How Was Your Day?</h2>
         <form id="moodTrackerForm">
-            <div class="mb-3">
-                <label for="date" class="form-label">Date:</label>
-                <input type="date" id="date" class="form-control" required>
+            <input type="date" id="date" required>
+    
+            <div class="emoji-selector">
+                <label>
+                    <input type="radio" name="mood" value="😃 Happy" required>
+                    <span>😃</span>
+                </label>
+                <label>
+                    <input type="radio" name="mood" value="😐 Neutral">
+                    <span>😐</span>
+                </label>
+                <label>
+                    <input type="radio" name="mood" value="😔 Sad">
+                    <span>😔</span>
+                </label>
+                <label>
+                    <input type="radio" name="mood" value="😢 Very Sad">
+                    <span>😢</span>
+                </label>
             </div>
-
-            <div class="mb-3">
-                <label for="mood" class="form-label">Your Mood:</label>
-                <select id="mood" class="form-control" required>
-                    <option value="Happy">😊 Happy</option>
-                    <option value="Sad">😢 Sad</option>
-                    <option value="Angry">😡 Angry</option>
-                    <option value="Relaxed">😌 Relaxed</option>
-                    <option value="Anxious">😰 Anxious</option>
-                </select>
-            </div>
-
-            <div class="mb-3">
-                <label for="activity" class="form-label">What Did You Do?</label>
-                <input type="text" id="activity" class="form-control" placeholder="e.g., Reading, Exercising, Meditation" required>
-            </div>
-
-            <button type="submit" class="btn btn-success">Save</button>
+    
+            <textarea id="problem" placeholder="Describe your day in a few words..." required></textarea>
+            <button type="submit">➕ Add Entry</button>
         </form>
-
-        <hr>
-
-        <h3>Saved Entries</h3>
-        <ul id="savedEntries" class="list-group"></ul>
+    
+        <ul id="moodEntries"></ul>
     </div>
+    
+    
 
     <!-- Information Section -->
     <div class="container mt-5">
@@ -81,14 +101,14 @@
                     <h3>Self-Care Tips</h3>
                     <p>Learn how to take care of your mind and body.</p>
                     <div class="extra-content">
-                      <p>🧘 Practice daily mindfulness and meditation.</p>
-                      <p>🏃 Engage in regular physical activity for a healthy body.</p>
-                      <p>🥗 Maintain a balanced diet to fuel your mind.</p>
-                      <p>💤 Prioritize quality sleep for better mental clarity.</p>
-                      <p>📖 Read books that inspire and educate you.</p>
-                      <p>🚀 Set small, achievable goals to stay motivated.</p>
-                      <p>🌿 Spend time in nature to refresh your mind.</p>
-                    
+                        <p>🧘 Practice daily mindfulness and meditation.</p>
+                        <p>🏃 Engage in regular physical activity for a healthy body.</p>
+                        <p>🥗 Maintain a balanced diet to fuel your mind.</p>
+                        <p>💤 Prioritize quality sleep for better mental clarity.</p>
+                        <p>📖 Read books that inspire and educate you.</p>
+                        <p>🚀 Set small, achievable goals to stay motivated.</p>
+                        <p>🌿 Spend time in nature to refresh your mind.</p>
+
                     </div>
                 </div>
             </div>
@@ -97,11 +117,14 @@
                     <h3>Community Support</h3>
                     <p>Join a safe space where people share and support each other.</p>
                     <div class="extra-content">
-                      <p><a href="https://youtu.be/eWZ_8iQi59c?si=QsJj5oXYESYl5SX-" target="_blank">Mental Health Awareness</a></p>
-                      <p><a href="https://youtu.be/gy1iH_Gxn0Q?si=9PqYQ9Wosjb1kGOr" target="_blank">TEDx Talks on Mental Health</a></p>
-                      <p><a href="https://www.justdial.com/Indore/NGOS-For-Mental-Health/nct-11290928" target="_blank">Top Nearby NGOs</a></p>
-                      
-                      
+                        <p><a href="https://youtu.be/eWZ_8iQi59c?si=QsJj5oXYESYl5SX-" target="_blank">Mental Health
+                                Awareness</a></p>
+                        <p><a href="https://youtu.be/gy1iH_Gxn0Q?si=9PqYQ9Wosjb1kGOr" target="_blank">TEDx Talks on
+                                Mental Health</a></p>
+                        <p><a href="https://www.justdial.com/Indore/NGOS-For-Mental-Health/nct-11290928"
+                                target="_blank">Top Nearby NGOs</a></p>
+
+
                     </div>
                 </div>
             </div>
@@ -110,16 +133,16 @@
                     <h3>Mindfulness Exercises</h3>
                     <p>Practice meditation and breathing techniques.</p>
                     <div class="extra-content">
-                      <p>🌬️ Deep Breathing: Inhale slowly, exhale gently.</p>
-      <p>🧘 Meditation: Focus on your breath, let thoughts pass.</p>
-      <p>🎵 Sound Therapy: Listen to calming music or nature sounds.</p>
-      <p>👁️ Visualization: Imagine a peaceful place to relax.</p>
-      <p>📿 Mantra Repetition: Repeat a soothing word or phrase.</p>
-      <p>☀️ Stretching: Loosen up with simple morning moves.</p>
-      <p>🤲 Gratitude: Write down three good things daily.</p>
-      <p>🚶 Walking: Walk slowly, feel each step.</p>
-      <p>🌳 Nature Time: Spend a few moments outdoors.</p>
-      <p>📱 Digital Detox: Take a break from screens.</p>
+                        <p>🌬️ Deep Breathing: Inhale slowly, exhale gently.</p>
+                        <p>🧘 Meditation: Focus on your breath, let thoughts pass.</p>
+                        <p>🎵 Sound Therapy: Listen to calming music or nature sounds.</p>
+                        <p>👁️ Visualization: Imagine a peaceful place to relax.</p>
+                        <p>📿 Mantra Repetition: Repeat a soothing word or phrase.</p>
+                        <p>☀️ Stretching: Loosen up with simple morning moves.</p>
+                        <p>🤲 Gratitude: Write down three good things daily.</p>
+                        <p>🚶 Walking: Walk slowly, feel each step.</p>
+                        <p>🌳 Nature Time: Spend a few moments outdoors.</p>
+                        <p>📱 Digital Detox: Take a break from screens.</p>
                     </div>
                 </div>
             </div>

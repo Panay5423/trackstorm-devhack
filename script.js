@@ -26,25 +26,43 @@ function typeEffect() {
 
 typeEffect();
 
-// Modal Functionality
-const modal = document.getElementById("registerModal");
-const openModalBtn = document.getElementById("exploreMoreBtn");
-const closeModalBtn = document.querySelector(".close");
+// Toggle Extra Content
+document.querySelectorAll(".info-box").forEach(box => {
+    box.addEventListener("click", function () {
+        const extraContent = this.querySelector(".extra-content");
+        extraContent.style.display = extraContent.style.display === "block" ? "none" : "block";
+    });
+});
+// need help 
+document.addEventListener("DOMContentLoaded", function () {
+    var myModal = new bootstrap.Modal(document.getElementById("helpModal"));
 
+    document.getElementById("openModal").addEventListener("click", function () {
+        myModal.show();
+    });
+
+    document.getElementById("closeModal").addEventListener("click", function () {
+        myModal.hide();
+    });
+
+    document.getElementById("closeBtn").addEventListener("click", function () {
+        myModal.hide();
+    });
+});
 document.getElementById("moodTrackerForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
     const date = document.getElementById("date").value;
-    const mood = document.getElementById("mood").value;
-    const activity = document.getElementById("activity").value;
+    const problem = document.getElementById("problem").value;
+    const mood = document.querySelector('input[name="mood"]:checked');
 
-    if (!date || !mood || !activity) {
+    if (!date || !mood || !problem) {
         alert("❌ Please fill out all fields!");
         return;
     }
 
     let moodEntries = JSON.parse(localStorage.getItem("moodEntries")) || [];
-    moodEntries.push({ date, mood, activity });
+    moodEntries.push({ date, mood: mood.value, problem });
 
     localStorage.setItem("moodEntries", JSON.stringify(moodEntries));
     alert("✅ Entry Saved!");
@@ -54,17 +72,15 @@ document.getElementById("moodTrackerForm").addEventListener("submit", function(e
 
 function displayEntries() {
     let moodEntries = JSON.parse(localStorage.getItem("moodEntries")) || [];
-    let savedEntriesList = document.getElementById("savedEntries");
+    let savedEntriesList = document.getElementById("moodEntries");
     savedEntriesList.innerHTML = "";
 
     moodEntries.forEach(entry => {
         let listItem = document.createElement("li");
-        listItem.className = "list-group-item";
-        listItem.textContent = `📅 ${entry.date} | 😃 ${entry.mood} | 🎯 ${entry.activity}`;
+        listItem.innerHTML = `<span>${entry.mood}</span> 📅 ${entry.date} | 📝 ${entry.problem}`;
         savedEntriesList.appendChild(listItem);
     });
 }
 
 // Load existing entries on page load
 displayEntries();
-
