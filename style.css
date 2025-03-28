@@ -1,0 +1,19 @@
+
+body {
+    background-color: #f0f8ff;
+}
+.hero {
+    background: url('https://source.unsplash.com/1600x900/?calm,nature') center/cover no-repeat;
+    text-align: center;
+    padding: 100px 20px;
+}
+.hero h1, .hero p {
+    color: black; /* Updated text color */
+}
+.info-box {
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
