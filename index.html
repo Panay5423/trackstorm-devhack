@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mental Health Wellness</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">n
-   
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
     <!-- Navbar -->
@@ -22,7 +24,7 @@
                     <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Community</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Need Help</a></li>
                 </ul>
             </div>
         </div>
@@ -31,11 +33,67 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1 class="display-4">Take a Deep Breath & Relax</h1>
+            <h1 class="display-4" id="tagline"></h1>
             <p class="lead">Your mental well-being matters. Start your journey towards a healthier mind today.</p>
-            <a href="#" class="btn btn-primary btn-lg">Explore More</a>
+            <button id="exploreMoreBtn" class="btn btn-primary btn-lg">Explore More</button>
+
         </div>
     </section>
+    <!-- Registration Modal -->
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Register</h2>
+        <form id="registrationForm">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="password" id="password" placeholder="Password" required>
+            
+            <!-- Gender Radio Buttons -->
+            <div class="gender-box">
+                <label>Gender:</label>
+                <label><input type="radio" name="gender" value="Male" required> Male</label>
+                <label><input type="radio" name="gender" value="Female" required> Female</label>
+            </div>
+
+            <!-- Country Dropdown using Better UI -->
+            <div class="country-box">
+                <label>Country:</label>
+                <input type="text" id="country" placeholder="Enter your country" required>
+            </div>
+
+            <button type="button" class="btn-submit" onclick="redirectToLogin()">Register</button>
+        </form>
+    </div>
+</div>
+<!-- Registration Modal -->
+<!-- Registration Modal -->
+<!-- <div id="registerModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Register</h2>
+        <form id="registrationForm">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="password" id="password" placeholder="Password" required>
+
+            <div class="gender-box">
+                <label>Gender:</label>
+                <label><input type="radio" name="gender" value="Male" required> Male</label>
+                <label><input type="radio" name="gender" value="Female" required> Female</label>
+            </div>
+
+            <div class="country-box">
+                <label>Country:</label>
+                <input type="text" id="country" placeholder="Enter your country" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Register</button>
+        </form>
+    </div>
+</div> -->
+
+
 
     <!-- Information Section -->
     <div class="container mt-5">
@@ -62,5 +120,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
