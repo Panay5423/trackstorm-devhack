@@ -31,40 +31,40 @@ const modal = document.getElementById("registerModal");
 const openModalBtn = document.getElementById("exploreMoreBtn");
 const closeModalBtn = document.querySelector(".close");
 
-// Show modal when "Explore More" is clicked
-openModalBtn.addEventListener("click", () => {
-    modal.style.display = "flex";
-});
+document.getElementById("moodTrackerForm").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-// Hide modal when the close button is clicked
-closeModalBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
+    const date = document.getElementById("date").value;
+    const mood = document.getElementById("mood").value;
+    const activity = document.getElementById("activity").value;
 
-// Close modal if the user clicks outside the modal content
-window.addEventListener("click", (event) => {
-    if (event.target === modal) {
-        modal.style.display = "none";
+    if (!date || !mood || !activity) {
+        alert("❌ Please fill out all fields!");
+        return;
     }
+
+    let moodEntries = JSON.parse(localStorage.getItem("moodEntries")) || [];
+    moodEntries.push({ date, mood, activity });
+
+    localStorage.setItem("moodEntries", JSON.stringify(moodEntries));
+    alert("✅ Entry Saved!");
+
+    displayEntries();
 });
 
-// Form Submission (Fake Processing)
-// document.getElementById("registrationForm").addEventListener("submit", (event) => {
-//     event.preventDefault();
+function displayEntries() {
+    let moodEntries = JSON.parse(localStorage.getItem("moodEntries")) || [];
+    let savedEntriesList = document.getElementById("savedEntries");
+    savedEntriesList.innerHTML = "";
 
-//     const name = document.getElementById("name").value;
-//     const email = document.getElementById("email").value;
-//     const password = document.getElementById("password").value;
-//     const gender = document.querySelector('input[name="gender"]:checked').value;
-//     const country = document.getElementById("country").value;
-
-//     alert(`✅ Registration Successful!\n👤 Name: ${name}\n📧 Email: ${email}\n🚻 Gender: ${gender}\n🌍 Country: ${country}`);
-
-//     modal.style.display = "none";
-// });
-// document.getElementById("exploreMoreBtn").addEventListener("click", function() {
-//     window.location.href = "login.html"; // Redirect to Login Page
-// });
-function redirectToLogin() {
-    window.location.href = "login.html"; // Redirect to login page
+    moodEntries.forEach(entry => {
+        let listItem = document.createElement("li");
+        listItem.className = "list-group-item";
+        listItem.textContent = `📅 ${entry.date} | 😃 ${entry.mood} | 🎯 ${entry.activity}`;
+        savedEntriesList.appendChild(listItem);
+    });
 }
+
+// Load existing entries on page load
+displayEntries();
+

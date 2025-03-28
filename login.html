@@ -23,28 +23,25 @@
     <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
             event.preventDefault();
-
-            // Get user input
+    
             const email = document.getElementById("loginEmail").value;
             const password = document.getElementById("loginPassword").value;
-
-            // Retrieve stored user data from localStorage
-            const storedUser = JSON.parse(localStorage.getItem("user"));
-
-            if (!storedUser) {
-                alert("❌ No user found. Please register first.");
-                return;
-            }
-
-            // Check if email and password match
-            if (storedUser.email === email && storedUser.password === password) {
-                alert(`✅ Welcome, ${storedUser.name}!`);
+    
+            // Retrieve all users
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+    
+            // Find user with matching email and password
+            const matchedUser = users.find(user => user.email === email && user.password === password);
+    
+            if (matchedUser) {
+                alert(`✅ Welcome, ${matchedUser.name}!`);
                 window.location.href = "home.html"; // Redirect after login
             } else {
                 alert("❌ Incorrect email or password.");
             }
         });
     </script>
+    
 </body>
 
 </html>
